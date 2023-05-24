@@ -61,20 +61,20 @@
 @media (max-width: 600px) {
   /* Adjust font size for smaller screens */
   body {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   /* Adjust width and padding of input fields */
   .decision-input {
     width: 90%;
-    padding: 12px;
-    font-size: 16px;
+    padding: 20px;
+    font-size: 22px;
   }
 
   /* Adjust button styles for smaller screens */
   .decision-btn {
-    font-size: 18px;
-    padding: 12px 24px;
+    font-size: 24px;
+    padding: 20px 36px;
   }
 }
 
