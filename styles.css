@@ -68,13 +68,15 @@
   .decision-input {
     width: 90%;
     padding: 20px;
-    font-size: 22px;
+    font-size: 20px;
   }
 
   /* Adjust button styles for smaller screens */
   .decision-btn {
-    font-size: 32px;
-    padding: 20px 40px;
+    font-size: 24px;
+    padding: 10px 20px;
+    width: 75%;
+    margin-bottom: 20px;
   }
 }
 
