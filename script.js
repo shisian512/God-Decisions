@@ -7,7 +7,7 @@ const resultDiv = document.getElementById('result');
 // Add decision entry
 addDecisionBtn.addEventListener('click', () => {
     const decisionCount = decisionEntries.childElementCount + 1;
-    if (decisionCount <= 4) {
+    if (decisionCount <= 10) {
         const newEntry = document.createElement('div');
         newEntry.className = 'decision-entry';
         newEntry.innerHTML = `
@@ -41,7 +41,7 @@ calculateBtn.addEventListener('click', () => {
 // Calculate probabilities
 function calculateProbabilities(decisions) {
     const decisionCount = decisions.length;
-    const totalCount = 100000;
+    const totalCount = 1000000;
     const probabilities = {};
 
     // Initialize probabilities
