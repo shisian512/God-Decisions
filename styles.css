@@ -57,3 +57,22 @@
     color: #999;
     font-size: 12px;
 }
+
+@media (max-width: 600px) {
+  /* Adjust font size for smaller screens */
+  body {
+    font-size: 14px;
+  }
+
+  /* Adjust width and padding of input fields */
+  .decision-input {
+    width: 80%;
+    padding: 8px;
+  }
+
+  /* Adjust button styles for smaller screens */
+  .decision-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
