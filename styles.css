@@ -1,12 +1,5 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #EAEAEA;
-    padding: 20px;
-}
-
-#app {
+.container {
     max-width: 720px;
-    margin: 0 auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
@@ -16,43 +9,28 @@ body {
 .title {
     text-align: center;
     color: #5C6BC0;
+    margin-top: 20px;
 }
 
 .subtitle {
     color: #5C6BC0;
+    margin-top: 10px;
 }
 
 .policy {
     margin-bottom: 20px;
 }
 
-.policy p {
-    margin-top: 0;
-}
-
 .decision-entry {
     margin-bottom: 10px;
 }
 
-.decision-entry label {
-    display: inline-block;
-    width: 100px;
-}
-
 .decision-form button {
     margin-top: 10px;
-    background-color: #D4F3FF;
-    border: none;
-    border-radius: 4px;
-    color: #5C6BC0;
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 .result {
     margin-top: 20px;
-    padding: 10px;
-    background-color: #EAEAEA;
 }
 
 .max-decisions {

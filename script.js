@@ -9,7 +9,7 @@ addDecisionBtn.addEventListener('click', () => {
     const decisionCount = decisionEntries.childElementCount + 1;
     if (decisionCount <= 4) {
         const newEntry = document.createElement('div');
-        newEntry.classList.add('decision-entry');
+        newEntry.className = 'decision-entry';
         newEntry.innerHTML = `
             <label for="decision${decisionCount}">Decision ${decisionCount}:</label>
             <input type="text" id="decision${decisionCount}">
@@ -20,38 +20,65 @@ addDecisionBtn.addEventListener('click', () => {
     }
 });
 
-// Calculate decision probability
+// Calculate probabilities
 calculateBtn.addEventListener('click', () => {
-    const decisionNames = Array.from(decisionEntries.getElementsByTagName('input')).map(input => input.value);
-    const probabilities = {};
-    const decisionCounts = {};
+    const decisions = [];
+    const inputs = decisionEntries.querySelectorAll('input');
+    inputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            decisions.push(input.value.trim());
+        }
+    });
 
-    // Initialize decision counts
-    for (const decision of decisionNames) {
-        decisionCounts[decision] = 0;
+    if (decisions.length >= 2) {
+        const probabilities = calculateProbabilities(decisions);
+        printResult(probabilities);
+    } else {
+        alert('Please enter at least 2 decisions.');
     }
-
-    // Run simulation
-    const n = 100000;
-    for (let i = 0; i < n; i++) {
-        const decision = decisionNames[Math.floor(Math.random() * decisionNames.length)];
-        decisionCounts[decision]++;
-    }
-
-    // Calculate probabilities
-    const total = Object.values(decisionCounts).reduce((sum, count) => sum + count, 0);
-    for (const [decision, count] of Object.entries(decisionCounts)) {
-        probabilities[decision] = (count / total) * 100;
-    }
-
-    // Find decision with the highest probability
-    const result = Object.keys(probabilities).reduce((a, b) => probabilities[a] > probabilities[b] ? a : b);
-
-    // Display result
-    let resultHTML = '';
-    for (const [decision, probability] of Object.entries(probabilities)) {
-        resultHTML += `<p>${decision}: ${probability.toFixed(2)}%</p>`;
-    }
-    resultHTML += `<p>Result: ${result} has a higher probability.</p>`;
-    resultDiv.innerHTML = resultHTML;
 });
+
+// Calculate probabilities
+function calculateProbabilities(decisions) {
+    const decisionCount = decisions.length;
+    const totalCount = 100000;
+    const probabilities = {};
+
+    // Initialize probabilities
+    decisions.forEach(decision => {
+        probabilities[decision] = 0;
+    });
+
+    // Perform simulations
+    for (let i = 0; i < totalCount; i++) {
+        const randomIndex = Math.floor(Math.random() * decisionCount);
+        const randomDecision = decisions[randomIndex];
+        probabilities[randomDecision]++;
+    }
+
+    // Calculate percentages
+    Object.keys(probabilities).forEach(decision => {
+        probabilities[decision] = ((probabilities[decision] / totalCount) * 100).toFixed(2);
+    });
+
+    return probabilities;
+}
+
+// Print the result
+function printResult(probabilities) {
+    resultDiv.innerHTML = '';
+    const resultText = document.createElement('p');
+    for (const decision in probabilities) {
+        const probability = probabilities[decision];
+        resultText.innerHTML += `${decision}: ${probability}%<br>`;
+    }
+    resultDiv.appendChild(resultText);
+
+    // Determine the decision with the highest probability
+    const highestProbability = Math.max(...Object.values(probabilities));
+    const highestDecision = Object.keys(probabilities).find(decision => probabilities[decision] === highestProbability);
+
+    const finalResultText = document.createElement('p');
+    finalResultText.innerHTML = `Result: ${highestDecision} has the highest probability.`;
+    resultDiv.appendChild(finalResultText);
+}

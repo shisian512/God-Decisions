@@ -2,31 +2,20 @@
 <html>
 <head>
     <title>God's Decisions</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
+    <div class="container">
         <h1 class="title">God's Decisions</h1>
+        <p class="subtitle">Decision Probability Calculator</p>
+        
         <div class="policy">
-            <h2 class="subtitle">Service Policy</h2>
-            <p>
-                By using this app, you accept and agree to abide by the policy stated herein.
-                This app provides decision probability calculation for entertainment purposes only.
-                The results are based on random simulations and should not be considered as reliable predictions.
-                The maximum number of decisions allowed for free usage is 4.
-                Any additional decision entries require a premium upgrade.
-                The decision entries and results are not stored or transmitted anywhere.
-            </p>
-            <h2 class="subtitle">Privacy Policy</h2>
-            <p>
-                This app does not collect or store any personal information.
-                It does not track or share any user data.
-                Your privacy is important to us.
-            </p>
+            <p>By using God's Decisions, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Service Policy</a>.</p>
         </div>
 
         <div class="decision-form">
-            <h2 class="subtitle">Decision Entries</h2>
             <div id="decision-entries">
                 <div class="decision-entry">
                     <label for="decision1">Decision 1:</label>
@@ -37,15 +26,19 @@
                     <input type="text" id="decision2">
                 </div>
             </div>
-            <button id="add-decision-btn">Add Decision</button>
-            <button id="calculate-btn">Let's Decide For Meee !!!</button>
+
+            <button id="add-decision-btn" class="btn btn-primary">Add Decision</button>
+            <button id="calculate-btn" class="btn btn-primary">Let's Decide For Meee !!!</button>
         </div>
 
-        <div class="result" id="result"></div>
-        <div class="max-decisions">Maximum Decisions: 4 (Premium upgrade required for more)</div>
-        <div class="copy">&copy; Nick 2023</div>
+        <div id="result" class="result"></div>
+
+        <p class="max-decisions">Maximum Decisions: 2 (Premium upgrade required for more)</p>
+
+        <p class="copy">&copy; 2023 Nick. All rights reserved.</p>
     </div>
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
