@@ -73,8 +73,8 @@
 
   /* Adjust button styles for smaller screens */
   .decision-btn {
-    font-size: 24px;
-    padding: 20px 36px;
+    font-size: 32px;
+    padding: 20px 40px;
   }
 }
 
