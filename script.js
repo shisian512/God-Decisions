@@ -16,7 +16,7 @@ addDecisionBtn.addEventListener('click', () => {
         `;
         decisionEntries.appendChild(newEntry);
     } else {
-        alert("Buy it from Godddd in your Dreammm !!!");
+        alert("Please buy it from God, thank you !!!");
     }
 });
 
@@ -66,19 +66,37 @@ function calculateProbabilities(decisions) {
 
 // Print the result
 function printResult(probabilities) {
-    resultDiv.innerHTML = '';
-    const resultText = document.createElement('p');
-    for (const decision in probabilities) {
-        const probability = probabilities[decision];
-        resultText.innerHTML += `${decision}: ${probability}%<br>`;
+  resultDiv.innerHTML = '';
+
+  if (Object.keys(probabilities).length === 0) {
+    const errorText = document.createElement('p');
+    errorText.innerHTML = 'Please enter at least 2 decisions.';
+    resultDiv.appendChild(errorText);
+    return;
+  }
+
+  const resultText = document.createElement('p');
+  for (const decision in probabilities) {
+    const probability = probabilities[decision];
+    resultText.innerHTML += `${decision}: ${probability}%<br>`;
+  }
+  resultDiv.appendChild(resultText);
+
+  // Determine the decision with the highest probability
+  let highestDecision = '';
+  let highestProbability = 0;
+  for (const decision in probabilities) {
+    const probability = probabilities[decision];
+    if (probability > highestProbability) {
+      highestProbability = probability;
+      highestDecision = decision;
     }
-    resultDiv.appendChild(resultText);
+  }
 
-    // Determine the decision with the highest probability
-    const highestProbability = Math.max(...Object.values(probabilities));
-    const highestDecision = Object.keys(probabilities).find(decision => probabilities[decision] === highestProbability);
-
-    const finalResultText = document.createElement('p');
-    finalResultText.innerHTML = `Result: ${highestDecision} has the highest probability.`;
-    resultDiv.appendChild(finalResultText);
+  const finalResultText = document.createElement('p');
+  finalResultText.innerHTML = `Result: ${
+    highestDecision || 'No decision entered'
+  } has the highest probability.`;
+  resultDiv.appendChild(finalResultText);
 }
+

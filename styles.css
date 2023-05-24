@@ -10,7 +10,11 @@
     text-align: center;
     color: #5C6BC0;
     margin-top: 20px;
+    font-size: 36px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .subtitle {
     color: #5C6BC0;
@@ -27,7 +31,15 @@
 
 .decision-form button {
     margin-top: 10px;
+    background-color: #5C6BC0;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.decision-form button:hover {
+    background-color: #3F51B5;
+}
+
 
 .result {
     margin-top: 20px;
